@@ -1,26 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\windows\src\extern\TinyXml\tinystr.cpp">
-      <Filter>windows\tinyxml</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\windows\src\extern\TinyXml\tinyxml.cpp">
-      <Filter>windows\tinyxml</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\windows\src\extern\TinyXml\tinyxmlerror.cpp">
-      <Filter>windows\tinyxml</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\windows\src\extern\TinyXml\tinyxmlparser.cpp">
-      <Filter>windows\tinyxml</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\src\VisionUtils.cpp">
-      <Filter>cob_vision_utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\src\StdAfx.cpp">
       <Filter>cob_vision_utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\windows\StdAfx.cpp">
-      <Filter>windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\src\AbstractColorCamera.cpp">
       <Filter>cob_camera_sensors</Filter>
@@ -67,34 +49,31 @@
     <ClCompile Include="..\common\src\UnicapCamera.cpp">
       <Filter>cob_camera_sensors_ipa</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\windows\src\extern\MemJpegDecoder\memJpegDecoder.cpp">
-      <Filter>windows\MemJpegDecoder</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\src\StdAfx.cpp">
       <Filter>cob_camera_sensors</Filter>
     </ClCompile>
     <ClCompile Include="..\common\src\StdAfx.cpp">
       <Filter>cob_camera_sensors_ipa</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\src\CameraSensorToolbox.cpp">
+    <ClCompile Include="..\..\..\cob_object_perception_intern\windows\StdAfx.cpp" />
+    <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinystr.cpp" />
+    <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinyxml.cpp" />
+    <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinyxmlparser.cpp" />
+    <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\MemJpegDecoder\memJpegDecoder.cpp" />
+    <ClCompile Include="..\..\..\cob_common\cob_vision_utils\common\src\CameraSensorToolbox.cpp">
+      <Filter>cob_vision_utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\cob_common\cob_vision_utils\common\src\VisionUtils.cpp">
       <Filter>cob_vision_utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\windows\src\extern\TinyXml\tinystr.h">
-      <Filter>windows\tinyxml</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\windows\src\extern\TinyXml\tinyxml.h">
-      <Filter>windows\tinyxml</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\include\cob_vision_utils\VisionUtils.h">
       <Filter>cob_vision_utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\include\cob_vision_utils\StdAfx.h">
       <Filter>cob_vision_utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\windows\StdAfx.h">
-      <Filter>windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\AbstractColorCamera.h">
       <Filter>cob_camera_sensors</Filter>
@@ -138,9 +117,6 @@
     <ClInclude Include="..\common\include\cob_camera_sensors_ipa\PMDCamCube.h">
       <Filter>cob_camera_sensors_ipa</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\windows\src\extern\MemJpegDecoder\memJpegDecoder.h">
-      <Filter>windows\MemJpegDecoder</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\StdAfx.h">
       <Filter>cob_camera_sensors</Filter>
     </ClInclude>
@@ -150,6 +126,10 @@
     <ClInclude Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorToolbox.h">
       <Filter>cob_vision_utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\cob_object_perception_intern\windows\StdAfx.h" />
+    <ClInclude Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinystr.h" />
+    <ClInclude Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinyxml.h" />
+    <ClInclude Include="..\..\..\cob_object_perception_intern\windows\src\extern\MemJpegDecoder\memJpegDecoder.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="cob_vision_utils">
