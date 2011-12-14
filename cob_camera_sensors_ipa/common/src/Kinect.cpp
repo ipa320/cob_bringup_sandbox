@@ -4,8 +4,8 @@
 	#include "tinyxml.h"
 	#include "cob_vision_utils/GlobalDefines.h"
 #else
-	#include "cob_vision/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/Kinect.h"
-	#include "cob_vision/windows/src/extern/TinyXml/tinyxml.h"
+	#include "cob_driver_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/Kinect.h"
+	#include "cob_object_perception_intern/windows/src/extern/TinyXml/tinyxml.h"
 	#include "cob_common/cob_vision_utils/common/include/cob_vision_utils/GlobalDefines.h"
 #endif
 

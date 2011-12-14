@@ -23,7 +23,7 @@
 #include <opencv/ml.h>
 #include <opencv/highgui.h>
 
-#include "cob_vision/windows/src/extern/TinyXml/tinyxml.h"
-#include "cob_vision/windows/src/extern/TinyXml/tinystr.h"
+#include "cob_object_perception_intern/windows/src/extern/TinyXml/tinyxml.h"
+#include "cob_object_perception_intern/windows/src/extern/TinyXml/tinystr.h"
 
 #endif

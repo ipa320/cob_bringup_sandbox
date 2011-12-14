@@ -4,7 +4,7 @@
 
 	#include "cob_vision_utils/memJpegDecoder.h"
 #else
-	#include "cob_vision/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/IPCameraVFeld.h"
+	#include "cob_driver_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/IPCameraVFeld.h"
 
 	#include "cob_vision/windows/src/extern/MemJpegDecoder/memJpegDecoder.h"
 #endif

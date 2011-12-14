@@ -125,8 +125,8 @@
     </Link>
     <PostBuildEvent>
       <Message>Copy DLL</Message>
-      <Command>copy "$(OutDir)$(ProjectName)D.dll" "$(COB3_DIR)\cob_vision\windows\lib\IPA\$(ProjectName)D.dll"
-copy "$(OutDir)$(ProjectName)D.lib" "$(COB3_DIR)\cob_vision\windows\lib\IPA\$(ProjectName)D.lib"
+      <Command>copy "$(OutDir)$(ProjectName)D.dll" "$(COB3_DIR)\cob_object_perception_intern\windows\lib\IPA\$(ProjectName)D.dll"
+copy "$(OutDir)$(ProjectName)D.lib" "$(COB3_DIR)\cob_object_perception_intern\windows\lib\IPA\$(ProjectName)D.lib"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -164,8 +164,8 @@ copy "$(OutDir)$(ProjectName)D.lib" "$(COB3_DIR)\cob_vision\windows\lib\IPA\$(Pr
       </DataExecutionPrevention>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(OutDir)$(ProjectName).dll" "$(COB3_DIR)\cob_vision\windows\lib\IPA\$(ProjectName).dll"
-copy "$(OutDir)$(ProjectName).lib" "$(COB3_DIR)\cob_vision\windows\lib\IPA\$(ProjectName).lib"
+      <Command>copy "$(OutDir)$(ProjectName).dll" "$(COB3_DIR)\cob_object_perception_intern\windows\lib\IPA\$(ProjectName).dll"
+copy "$(OutDir)$(ProjectName).lib" "$(COB3_DIR)\cob_object_perception_intern\windows\lib\IPA\$(ProjectName).lib"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -207,14 +207,11 @@ copy "$(OutDir)$(ProjectName).lib" "$(COB3_DIR)\cob_vision\windows\lib\IPA\$(Pro
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"../include/cob_vision_utils/StdAfx.h"</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="..\..\..\cob_object_perception_intern\windows\StdAfx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"StdAfx.h"</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"StdAfx.h"</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/PCH/windows/$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">StdAfx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)/PCH/windows/$(TargetName).pch</PrecompiledHeaderOutputFile>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)\PCH\windows\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)\PCH\windows\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\common\src\AxisCamVFeld.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"../include/cob_camera_sensors_ipa/StdAfx.h"</PrecompiledHeaderFile>
@@ -246,47 +243,47 @@ copy "$(OutDir)$(ProjectName).lib" "$(COB3_DIR)\cob_vision\windows\lib\IPA\$(Pro
     </ClCompile>
     <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinystr.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"../../../../../cob_object_perception_intern/windows/StdAfx.h"</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"../../../../windows/StdAfx.h"</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"../../../../../cob_object_perception_intern/windows/StdAfx.h"</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"../../../../windows/StdAfx.h"</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)/PCH/windows/$(TargetName).pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/PCH/windows/$(TargetName).pch</PrecompiledHeaderOutputFile>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinyxml.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"../../../../../cob_object_perception_intern/windows/StdAfx.h"</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"../../../../windows/StdAfx.h"</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"../../../../../cob_object_perception_intern/windows/StdAfx.h"</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"../../../../windows/StdAfx.h"</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)/PCH/windows/$(TargetName).pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/PCH/windows/$(TargetName).pch</PrecompiledHeaderOutputFile>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinyxmlerror.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"../../../../../cob_object_perception_intern/windows/StdAfx.h"</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"../../../../windows/StdAfx.h"</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"../../../../../cob_object_perception_intern/windows/StdAfx.h"</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"../../../../windows/StdAfx.h"</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)/PCH/windows/$(TargetName).pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/PCH/windows/$(TargetName).pch</PrecompiledHeaderOutputFile>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinyxmlparser.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"../../../../../cob_object_perception_intern/windows/StdAfx.h"</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"../../../../windows/StdAfx.h"</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"../../../../../cob_object_perception_intern/windows/StdAfx.h"</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"../../../../windows/StdAfx.h"</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)/PCH/windows/$(TargetName).pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/PCH/windows/$(TargetName).pch</PrecompiledHeaderOutputFile>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\MemJpegDecoder\memJpegDecoder.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"../../../../../cob_object_perception_intern/windows/StdAfx.h"</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"../../../../windows/StdAfx.h"</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)/PCH/windows/$(TargetName).pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/PCH/windows/$(TargetName).pch</PrecompiledHeaderOutputFile>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"../../../../../cob_object_perception_intern/windows/StdAfx.h"</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"../../../../windows/StdAfx.h"</PrecompiledHeaderFile>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\src\AbstractColorCamera.cpp">

@@ -12,7 +12,7 @@
 	#include "cob_camera_sensors/IPCamera.h"
 #else
 	#include "cob_driver/cob_camera_sensors/common/include/cob_camera_sensors/AbstractColorCamera.h"
-	#include "cob_vision/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/IPCamera.h"
+	#include "cob_driver_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/IPCamera.h"
 #endif
 
 namespace ipa_CameraSensors {
