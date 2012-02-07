@@ -1,7 +1,7 @@
 <stack>
   <description brief="cob_driver_sandbox">cob_driver_sandbox</description>
   <author>Maintained by Georg Arbeiter</author>
-  <license>BSD</license>  
+  <license>BSD,LGPL,proprietary</license>  
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/cob_driver_sandbox</url>
   <depend stack="camera_drivers" /> <!-- prosilica_gige_sdk -->
