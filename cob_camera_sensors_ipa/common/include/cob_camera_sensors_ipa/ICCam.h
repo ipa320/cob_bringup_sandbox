@@ -15,7 +15,7 @@
 #ifndef __IPA_ICCAM_H__
 #define __IPA_ICCAM_H__
 
-#include "StdAfx.h"
+#include "../../../../../cob_object_perception_intern/windows/src/PreCompiledHeaders/StdAfx.h"
 
 #ifdef __LINUX__
 //****************************************************************************************

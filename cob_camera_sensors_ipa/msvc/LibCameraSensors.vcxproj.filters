@@ -1,27 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\src\StdAfx.cpp">
-      <Filter>cob_vision_utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\src\AbstractColorCamera.cpp">
-      <Filter>cob_camera_sensors</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\src\AbstractRangeImagingSensor.cpp">
-      <Filter>cob_camera_sensors</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\src\AVTPikeCam.cpp">
-      <Filter>cob_camera_sensors</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\src\Swissranger.cpp">
-      <Filter>cob_camera_sensors</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\src\VirtualColorCam.cpp">
-      <Filter>cob_camera_sensors</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\src\VirtualRangeCam.cpp">
-      <Filter>cob_camera_sensors</Filter>
-    </ClCompile>
     <ClCompile Include="..\common\src\AxisCam.cpp">
       <Filter>cob_camera_sensors_ipa</Filter>
     </ClCompile>
@@ -46,59 +25,32 @@
     <ClCompile Include="..\common\src\PMDCamCube.cpp">
       <Filter>cob_camera_sensors_ipa</Filter>
     </ClCompile>
-    <ClCompile Include="..\common\src\UnicapCamera.cpp">
-      <Filter>cob_camera_sensors_ipa</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\src\StdAfx.cpp">
-      <Filter>cob_camera_sensors</Filter>
-    </ClCompile>
-    <ClCompile Include="..\common\src\StdAfx.cpp">
-      <Filter>cob_camera_sensors_ipa</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\cob_common\cob_vision_utils\common\src\CameraSensorToolbox.cpp">
-      <Filter>cob_vision_utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\cob_common\cob_vision_utils\common\src\VisionUtils.cpp">
       <Filter>cob_vision_utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\MemJpegDecoder\memJpegDecoder.cpp">
       <Filter>windows\MemJpegDecoder</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinystr.cpp">
-      <Filter>windows\tinyxml</Filter>
+    <ClCompile Include="..\..\..\cob_driver\cob_camera_sensors\common\src\AbstractColorCamera.cpp">
+      <Filter>cob_camera_sensors</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinyxml.cpp">
-      <Filter>windows\tinyxml</Filter>
+    <ClCompile Include="..\..\..\cob_driver\cob_camera_sensors\common\src\AbstractRangeImagingSensor.cpp">
+      <Filter>cob_camera_sensors</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinyxmlerror.cpp">
-      <Filter>windows\tinyxml</Filter>
+    <ClCompile Include="..\..\..\cob_driver\cob_camera_sensors\common\src\AVTPikeCam.cpp">
+      <Filter>cob_camera_sensors</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinyxmlparser.cpp">
-      <Filter>windows\tinyxml</Filter>
+    <ClCompile Include="..\..\..\cob_driver\cob_camera_sensors\common\src\Swissranger.cpp">
+      <Filter>cob_camera_sensors</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\cob_object_perception_intern\windows\StdAfx.cpp">
-      <Filter>windows</Filter>
+    <ClCompile Include="..\..\..\cob_driver\cob_camera_sensors\common\src\VirtualColorCam.cpp">
+      <Filter>cob_camera_sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\cob_driver\cob_camera_sensors\common\src\VirtualRangeCam.cpp">
+      <Filter>cob_camera_sensors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\include\cob_vision_utils\VisionUtils.h">
-      <Filter>cob_vision_utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\include\cob_vision_utils\StdAfx.h">
-      <Filter>cob_vision_utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\AbstractColorCamera.h">
-      <Filter>cob_camera_sensors</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\AbstractRangeImagingSensor.h">
-      <Filter>cob_camera_sensors</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\VirtualColorCam.h">
-      <Filter>cob_camera_sensors</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\VirtualRangeCam.h">
-      <Filter>cob_camera_sensors</Filter>
-    </ClInclude>
     <ClInclude Include="..\common\include\cob_camera_sensors_ipa\AxisCam.h">
       <Filter>cob_camera_sensors_ipa</Filter>
     </ClInclude>
@@ -129,26 +81,29 @@
     <ClInclude Include="..\common\include\cob_camera_sensors_ipa\PMDCamCube.h">
       <Filter>cob_camera_sensors_ipa</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\StdAfx.h">
-      <Filter>cob_camera_sensors</Filter>
-    </ClInclude>
-    <ClInclude Include="..\common\include\cob_camera_sensors_ipa\StdAfx.h">
-      <Filter>cob_camera_sensors_ipa</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorToolbox.h">
       <Filter>cob_vision_utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\cob_object_perception_intern\windows\src\extern\MemJpegDecoder\memJpegDecoder.h">
       <Filter>windows\MemJpegDecoder</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinystr.h">
-      <Filter>windows\tinyxml</Filter>
+    <ClInclude Include="..\..\..\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\AbstractColorCamera.h">
+      <Filter>cob_camera_sensors</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\cob_object_perception_intern\windows\src\extern\TinyXml\tinyxml.h">
-      <Filter>windows\tinyxml</Filter>
+    <ClInclude Include="..\..\..\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\AbstractRangeImagingSensor.h">
+      <Filter>cob_camera_sensors</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\cob_object_perception_intern\windows\StdAfx.h">
-      <Filter>windows</Filter>
+    <ClInclude Include="..\..\..\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\AVTPikeCam.h">
+      <Filter>cob_camera_sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\Swissranger.h">
+      <Filter>cob_camera_sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\VirtualColorCam.h">
+      <Filter>cob_camera_sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\VirtualRangeCam.h">
+      <Filter>cob_camera_sensors</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -157,9 +112,6 @@
     </Filter>
     <Filter Include="windows">
       <UniqueIdentifier>{fdd5f24a-8206-46e5-82a2-4bb9fff3d890}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="windows\tinyxml">
-      <UniqueIdentifier>{6ef2b155-aa1a-4f99-8124-7e22686d4fd3}</UniqueIdentifier>
     </Filter>
     <Filter Include="cob_camera_sensors">
       <UniqueIdentifier>{bf87d327-e5bd-416f-972c-ed6b0ab23b2d}</UniqueIdentifier>

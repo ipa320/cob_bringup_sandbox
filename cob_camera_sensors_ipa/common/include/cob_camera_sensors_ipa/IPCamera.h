@@ -6,7 +6,7 @@
 #ifndef __IPA_IPCAMERA_H__
 #define __IPA_IPCAMERA_H__
 
-#include "StdAfx.h"
+#include "../../../../../cob_object_perception_intern/windows/src/PreCompiledHeaders/StdAfx.h"
 #ifdef __LINUX__
 	#include "cob_vision_utils/CameraSensorDefines.h"
 	#include "cob_vision_utils/CameraSensorTypes.h"

@@ -59,7 +59,7 @@
 #ifndef __IPA_OPENCVCAMERA_H__
 #define __IPA_OPENCVCAMERA_H__
 
-#include "StdAfx.h"
+#include "../../../../../cob_object_perception_intern/windows/src/PreCompiledHeaders/StdAfx.h"
 #ifdef __LINUX__
 	#include "cob_camera_sensors/AbstractColorCamera.h"
 #else
