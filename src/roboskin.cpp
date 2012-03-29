@@ -33,8 +33,8 @@ int main(int argc, char **argv)
       {	  
 	  ret = LINUX_CAN_Read(h, &readMsg);
 	  msgID = readMsg.Msg.ID;
-	  if (msgID == 1010)
-	  {	            
+	  //if (msgID == 1010)
+	  //{	            
 	      dataID = readMsg.Msg.DATA[0];
 	      if (dataID == 64)
 	      {
@@ -56,7 +56,7 @@ int main(int argc, char **argv)
 		    }
 		}	      
 	      }	      
-	  }	  
+	  //}	  
       }        
   }
   
