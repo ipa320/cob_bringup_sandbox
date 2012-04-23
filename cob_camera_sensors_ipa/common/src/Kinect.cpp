@@ -17,6 +17,7 @@ using namespace ipa_CameraSensors;
 #define AVG3(a,b,c) (((int)(a) + (int)(b) + (int)(c)) / 3)
 #define AVG4(a,b,c,d) (((int)(a) + (int)(b) + (int)(c) + (int)(d)) >> 2)
 #define WAVG4(a,b,c,d,x,y)  ( ( ((int)(a) + (int)(b)) * (int)(x) + ((int)(c) + (int)(d)) * (int)(y) ) / ( 2 * ((int)(x) + (int(y))) ) )
+#define IPA_CLIP_CHAR(c) ((c)>255?255:(c)<0?0:(c))
 
 __DLL_LIBCAMERASENSORS__ AbstractRangeImagingSensorPtr ipa_CameraSensors::CreateRangeImagingSensor_Kinect()
 {
@@ -123,6 +124,15 @@ unsigned long Kinect::Init(std::string directory, int cameraIndex)
 		return ipa_Utils::RET_FAILED;
     }
 
+	// RegistrationType should be 2 (software) for Kinect, 1 (hardware) for PS and Asus
+	retVal = m_depth_generator.SetIntProperty("RegistrationType", 1);
+	if (retVal != XN_STATUS_OK)
+    {
+		std::cerr << "ERROR - Kinect::Init:" << std::endl;
+		std::cerr << "\t ... Could not set registration type";
+		return ipa_Utils::RET_FAILED;
+    }
+
 	// Set input format to uncompressed 8-bit BAYER
 	//retVal = m_image_generator.SetIntProperty ("InputFormat", 6);
 	//if (retVal != XN_STATUS_OK)
@@ -133,22 +143,17 @@ unsigned long Kinect::Init(std::string directory, int cameraIndex)
  //   }
 
 	// Bypass camera internal debayering give raw bayer pattern
+	// Asus Xtion
+	
+	retVal = m_image_generator.SetPixelFormat(XN_PIXEL_FORMAT_RGB24);
+	// Kinect
 	//retVal = m_image_generator.SetPixelFormat (XN_PIXEL_FORMAT_GRAYSCALE_8_BIT);
-	//if (retVal != XN_STATUS_OK)
- //   {
-	//	std::cerr << "ERROR - Kinect::Init:" << std::endl;
-	//	std::cerr << "\t ... Could not bypass camera internal debayering" << std::endl;
-	//	return ipa_Utils::RET_FAILED;
- //   }
-
-	// RegistrationType should be 2 (software) for Kinect, 1 (hardware) for PS
-	//retVal = m_depth_generator.SetIntProperty("RegistrationType", 2);
-	//if (retVal != XN_STATUS_OK)
- //   {
-	//	std::cerr << "ERROR - Kinect::Init:" << std::endl;
-	//	std::cerr << "\t ... Could not set registration type";
-	//	return ipa_Utils::RET_FAILED;
- //   }
+	if (retVal != XN_STATUS_OK)
+    {
+		std::cerr << "ERROR - Kinect::Init:" << std::endl;
+		std::cerr << "\t ... Could not bypass camera internal debayering" << std::endl;
+		return ipa_Utils::RET_FAILED;
+    }
 
 	retVal = m_depth_generator.GetIntProperty( "ShadowValue", m_shadowValue );
 	if (retVal != XN_STATUS_OK)
@@ -449,7 +454,18 @@ unsigned long Kinect::AcquireImages(int widthStepRange, int widthStepColor, int 
 	// Check if new data is available
 	if (colorImageData)
     {
-		FillRGB(color_width, color_height, ( unsigned char*) colorImageData);
+		if (XnPixelFormat::XN_PIXEL_FORMAT_GRAYSCALE_8_BIT == m_image_md.PixelFormat())
+			FillRGBBayer(color_width, color_height, ( unsigned char*) colorImageData);
+		else if (XnPixelFormat::XN_PIXEL_FORMAT_YUV422 == m_image_md.PixelFormat())
+			FillRGBYUV422(color_width, color_height, ( unsigned char*) colorImageData);
+		else if (XnPixelFormat::XN_PIXEL_FORMAT_RGB24 == m_image_md.PixelFormat())
+			memcpy (( unsigned char*) colorImageData, m_image_md.Data(), m_image_md.DataSize());
+		else
+		{
+			std::cout << "ERROR - Kinect::AcquireImages:" << std::endl;
+			std::cout << "\t ... Unsupported pixel format";
+			return ipa_Utils::RET_FAILED;
+		}
 
 		// Switch red and blue image channels
 		unsigned char temp_val = 0;
@@ -471,7 +487,74 @@ unsigned long Kinect::AcquireImages(int widthStepRange, int widthStepColor, int 
 	return  RET_OK;
 }
 
-unsigned long Kinect::FillRGB(unsigned width, unsigned height, unsigned char* rgb_buffer)
+unsigned long Kinect::FillRGBYUV422(unsigned width, unsigned height, unsigned char* rgb_buffer)
+{
+	// 0  1   2  3
+	// u  y1  v  y2
+
+	if (m_image_md.XRes() != width && m_image_md.YRes() != height)
+	{
+		if (width > m_image_md.XRes () || height > m_image_md.YRes ())
+			std::cerr << "ERROR - Kinect::FillRGBYUV422" << std::endl;
+			std::cerr << "\t ... Upsampling not supported" << std::endl;
+			return RET_FAILED;
+
+		if ( m_image_md.XRes () % width != 0 || m_image_md.YRes () % height != 0
+			|| (m_image_md.XRes () / width) & 0x01 || (m_image_md.YRes () / height & 0x01) )
+			std::cerr << "ERROR - Kinect::FillRGBYUV422" << std::endl;
+			std::cerr << "\t ... Downsampling only possible for power of two scale in both dimensions" << std::endl;
+			return RET_FAILED;
+	}
+
+	register const XnUInt8* yuv_buffer = m_image_md.Data();
+
+	unsigned int rgb_line_step = width * 3 * 2;
+	unsigned rgb_line_skip = 0;
+	if (rgb_line_step != 0)
+		rgb_line_skip = rgb_line_step - width * 3;
+
+	if (m_image_md.XRes() == width && m_image_md.YRes() == height)
+	{
+		for( register unsigned yIdx = 0; yIdx < height; ++yIdx, rgb_buffer += rgb_line_skip )
+		{
+			for( register unsigned xIdx = 0; xIdx < width; xIdx += 2, rgb_buffer += 6, yuv_buffer += 4 )
+			{
+				int v = yuv_buffer[2] - 128;
+				int u = yuv_buffer[0] - 128;
+
+				rgb_buffer[0] =  IPA_CLIP_CHAR (yuv_buffer[1] + ((v * 18678 + 8192 ) >> 14));
+				rgb_buffer[1] =  IPA_CLIP_CHAR (yuv_buffer[1] + ((v * -9519 - u * 6472 + 8192 ) >> 14));
+				rgb_buffer[2] =  IPA_CLIP_CHAR (yuv_buffer[1] + ((u * 33292 + 8192 ) >> 14));
+
+				rgb_buffer[3] =  IPA_CLIP_CHAR (yuv_buffer[3] + ((v * 18678 + 8192 ) >> 14));
+				rgb_buffer[4] =  IPA_CLIP_CHAR (yuv_buffer[3] + ((v * -9519 - u * 6472 + 8192 ) >> 14));
+				rgb_buffer[5] =  IPA_CLIP_CHAR (yuv_buffer[3] + ((u * 33292 + 8192 ) >> 14));
+			}
+		}
+	}
+	else
+	{
+		register unsigned yuv_step = m_image_md.XRes() / width;
+		register unsigned yuv_x_step = yuv_step << 1;
+		register unsigned yuv_skip = (m_image_md.YRes() / height - 1) * ( m_image_md.XRes() << 1 );
+
+		for( register unsigned yIdx = 0; yIdx < m_image_md.YRes(); yIdx += yuv_step, yuv_buffer += yuv_skip, rgb_buffer += rgb_line_skip )
+		{
+			for( register unsigned xIdx = 0; xIdx < m_image_md.XRes(); xIdx += yuv_step, rgb_buffer += 3, yuv_buffer += yuv_x_step )
+			{
+				int v = yuv_buffer[2] - 128;
+				int u = yuv_buffer[0] - 128;
+
+				rgb_buffer[0] =  IPA_CLIP_CHAR (yuv_buffer[1] + ((v * 18678 + 8192 ) >> 14));
+				rgb_buffer[1] =  IPA_CLIP_CHAR (yuv_buffer[1] + ((v * -9519 - u * 6472 + 8192 ) >> 14));
+				rgb_buffer[2] =  IPA_CLIP_CHAR (yuv_buffer[1] + ((u * 33292 + 8192 ) >> 14));
+			}
+		}
+	}
+	return  RET_OK;
+}
+
+unsigned long Kinect::FillRGBBayer(unsigned width, unsigned height, unsigned char* rgb_buffer)
 {
 	if (width != m_image_md.XRes () || height != m_image_md.YRes ())
 		// TODO: Throw exception

@@ -131,7 +131,8 @@ public:
 
 private:
 
-	unsigned long FillRGB(unsigned width, unsigned height, unsigned char* rgb_buffer);
+	unsigned long FillRGBBayer(unsigned width, unsigned height, unsigned char* rgb_buffer);
+	unsigned long FillRGBYUV422(unsigned width, unsigned height, unsigned char* rgb_buffer);
 
 	cv::Mat m_range_mat; ///< Temporary storage
 
