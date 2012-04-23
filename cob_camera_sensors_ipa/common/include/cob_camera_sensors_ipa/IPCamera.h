@@ -13,9 +13,9 @@
 	#include "cob_vision_utils/GlobalDefines.h"
 	#include "cob_vision_utils/memJpegDecoder.h"
 #else
-	#include "cob_common/cob_vision_utils/common/include/cob_vision_utils/CameraSensorDefines.h"
-	#include "cob_common/cob_vision_utils/common/include/cob_vision_utils/CameraSensorTypes.h"
-	#include "cob_common/cob_vision_utils/common/include/cob_vision_utils/GlobalDefines.h"
+	#include "cob_perception_common/cob_vision_utils/common/include/cob_vision_utils/CameraSensorDefines.h"
+	#include "cob_perception_common/cob_vision_utils/common/include/cob_vision_utils/CameraSensorTypes.h"
+	#include "cob_perception_common/cob_vision_utils/common/include/cob_vision_utils/GlobalDefines.h"
 	#include "cob_object_perception_intern/windows/src/extern/MemJpegDecoder/memJpegDecoder.h"
 #endif
 

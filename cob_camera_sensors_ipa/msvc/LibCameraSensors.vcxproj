@@ -325,9 +325,9 @@ copy "$(OutDir)$(ProjectName).lib" "$(COB3_DIR)\cob_object_perception_intern\win
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\cob_common\cob_vision_utils\common\src\CameraSensorToolbox.cpp">
+    <ClCompile Include="..\..\..\cob_perception_common\cob_vision_utils\common\src\CameraSensorToolbox.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/PCH/cob_vision_utils/$(TargetName).pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(COB3_DIR)\cob_object_perception_intern\windows\pch\PreCompiledHeadersD.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)/PCH/cob_vision_utils/$(TargetName).pch</PrecompiledHeaderOutputFile>
@@ -335,7 +335,7 @@ copy "$(OutDir)$(ProjectName).lib" "$(COB3_DIR)\cob_object_perception_intern\win
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"../include/cob_vision_utils/StdAfx.h"</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"../../../../cob_object_perception_intern/windows/src/PreCompiledHeaders/StdAfx.h"</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"../include/cob_vision_utils/StdAfx.h"</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"../../../../cob_object_perception_intern/windows/src/PreCompiledHeaders/StdAfx.h"</PrecompiledHeaderFile>
     </ClCompile>
@@ -575,7 +575,7 @@ copy "$(OutDir)$(ProjectName).lib" "$(COB3_DIR)\cob_object_perception_intern\win
     <ClInclude Include="..\common\include\cob_camera_sensors_ipa\PMDCamCube.h" />
     <CustomBuildStep Include="..\..\..\..\care-o-bot\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\AVTPikeCam.h" />
     <CustomBuildStep Include="..\common\include\cob_camera_sensors_ipa\AxisCam.h" />
-    <ClInclude Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorToolbox.h" />
+    <ClInclude Include="..\..\..\..\care-o-bot\cob_perception_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorToolbox.h" />
     <CustomBuildStep Include="..\common\include\cob_camera_sensors_ipa\ICCam.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -596,8 +596,8 @@ copy "$(OutDir)$(ProjectName).lib" "$(COB3_DIR)\cob_object_perception_intern\win
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </CustomBuildStep>
-    <ClInclude Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorDefines.h" />
-    <ClInclude Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorTypes.h" />
+    <ClInclude Include="..\..\..\..\care-o-bot\cob_perception_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorDefines.h" />
+    <ClInclude Include="..\..\..\..\care-o-bot\cob_perception_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorTypes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

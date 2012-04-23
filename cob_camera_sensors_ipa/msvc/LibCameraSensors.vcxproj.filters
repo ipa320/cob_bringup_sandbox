@@ -25,9 +25,6 @@
     <ClCompile Include="..\common\src\PMDCamCube.cpp">
       <Filter>cob_camera_sensors_ipa</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\cob_common\cob_vision_utils\common\src\CameraSensorToolbox.cpp">
-      <Filter>cob_vision_utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\cob_object_perception_intern\windows\src\extern\MemJpegDecoder\memJpegDecoder.cpp">
       <Filter>windows\MemJpegDecoder</Filter>
     </ClCompile>
@@ -49,18 +46,13 @@
     <ClCompile Include="..\..\..\cob_driver\cob_camera_sensors\common\src\VirtualRangeCam.cpp">
       <Filter>cob_camera_sensors</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\cob_perception_common\cob_vision_utils\common\src\CameraSensorToolbox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common\include\cob_camera_sensors_ipa\AxisCam.h">
       <Filter>cob_camera_sensors_ipa</Filter>
     </ClInclude>
     <ClInclude Include="..\common\include\cob_camera_sensors_ipa\AxisCamVFeld.h">
-      <Filter>cob_camera_sensors_ipa</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorDefines.h">
-      <Filter>cob_camera_sensors_ipa</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorTypes.h">
       <Filter>cob_camera_sensors_ipa</Filter>
     </ClInclude>
     <ClInclude Include="..\common\include\cob_camera_sensors_ipa\ICCam.h">
@@ -80,9 +72,6 @@
     </ClInclude>
     <ClInclude Include="..\common\include\cob_camera_sensors_ipa\PMDCamCube.h">
       <Filter>cob_camera_sensors_ipa</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\care-o-bot\cob_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorToolbox.h">
-      <Filter>cob_vision_utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\cob_object_perception_intern\windows\src\extern\MemJpegDecoder\memJpegDecoder.h">
       <Filter>windows\MemJpegDecoder</Filter>
@@ -105,6 +94,9 @@
     <ClInclude Include="..\..\..\cob_driver\cob_camera_sensors\common\include\cob_camera_sensors\VirtualRangeCam.h">
       <Filter>cob_camera_sensors</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\care-o-bot\cob_perception_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorToolbox.h" />
+    <ClInclude Include="..\..\..\..\care-o-bot\cob_perception_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorDefines.h" />
+    <ClInclude Include="..\..\..\..\care-o-bot\cob_perception_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorTypes.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="cob_vision_utils">

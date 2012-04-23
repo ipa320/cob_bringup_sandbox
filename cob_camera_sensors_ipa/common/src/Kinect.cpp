@@ -6,7 +6,7 @@
 #else
 	#include "cob_driver_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/Kinect.h"
 	#include "cob_object_perception_intern/windows/src/extern/TinyXml/tinyxml.h"
-	#include "cob_common/cob_vision_utils/common/include/cob_vision_utils/GlobalDefines.h"
+	#include "cob_perception_common/cob_vision_utils/common/include/cob_vision_utils/GlobalDefines.h"
 #endif
 
 #include <fstream>
@@ -114,45 +114,32 @@ unsigned long Kinect::Init(std::string directory, int cameraIndex)
 		return ipa_Utils::RET_FAILED;
 	}
 
-	// Maximal resolution for depth camera
-	output_mode.nFPS = 30;
-	output_mode.nXRes = XN_VGA_X_RES;
-	output_mode.nYRes = XN_VGA_Y_RES;
-
-	retVal = m_depth_generator.SetMapOutputMode (output_mode);
-	if (retVal !=XN_STATUS_OK)
-	{
-		std::cerr << "ERROR - Kinect::Init:" << std::endl;
-		std::cerr << "\t ... Cannot Cannot set output mode for depth image" << std::endl;
-		return ipa_Utils::RET_FAILED;
-	}
-
 	// Adjust the viewpoint of the range data according to the image data
 	retVal = m_depth_generator.GetAlternativeViewPointCap().SetViewPoint( m_image_generator );
     if (retVal != XN_STATUS_OK)
     {
 		std::cerr << "ERROR - Kinect::Init:" << std::endl;
-		std::cerr << "\t ... Error in depth stream to color image registration";
+		std::cerr << "\t ... Error in depth stream to color image registration" << std::endl;
 		return ipa_Utils::RET_FAILED;
     }
 
 	// Set input format to uncompressed 8-bit BAYER
-	retVal = m_image_generator.SetIntProperty ("InputFormat", 6);
-	if (retVal != XN_STATUS_OK)
-    {
-		std::cerr << "ERROR - Kinect::Init:" << std::endl;
-		std::cerr << "\t ... Could not set uncompressed 8-bit BAYER format";
-		return ipa_Utils::RET_FAILED;
-    }
+	//retVal = m_image_generator.SetIntProperty ("InputFormat", 6);
+	//if (retVal != XN_STATUS_OK)
+ //   {
+	//	std::cerr << "ERROR - Kinect::Init:" << std::endl;
+	//	std::cerr << "\t ... Could not set uncompressed 8-bit BAYER format" << std::endl;
+	//	return ipa_Utils::RET_FAILED;
+ //   }
 
 	// Bypass camera internal debayering give raw bayer pattern
-	retVal = m_image_generator.SetPixelFormat (XN_PIXEL_FORMAT_GRAYSCALE_8_BIT);
-	if (retVal != XN_STATUS_OK)
-    {
-		std::cerr << "ERROR - Kinect::Init:" << std::endl;
-		std::cerr << "\t ... Could not bypass camera internal debayering";
-		return ipa_Utils::RET_FAILED;
-    }
+	//retVal = m_image_generator.SetPixelFormat (XN_PIXEL_FORMAT_GRAYSCALE_8_BIT);
+	//if (retVal != XN_STATUS_OK)
+ //   {
+	//	std::cerr << "ERROR - Kinect::Init:" << std::endl;
+	//	std::cerr << "\t ... Could not bypass camera internal debayering" << std::endl;
+	//	return ipa_Utils::RET_FAILED;
+ //   }
 
 	// RegistrationType should be 2 (software) for Kinect, 1 (hardware) for PS
 	//retVal = m_depth_generator.SetIntProperty("RegistrationType", 2);
@@ -167,7 +154,7 @@ unsigned long Kinect::Init(std::string directory, int cameraIndex)
 	if (retVal != XN_STATUS_OK)
     {
 		std::cerr << "ERROR - Kinect::Init:" << std::endl;
-		std::cerr << "\t ... Could not read shadow value";
+		std::cerr << "\t ... Could not read shadow value" << std::endl;
 		return ipa_Utils::RET_FAILED;
     }
       
@@ -175,7 +162,7 @@ unsigned long Kinect::Init(std::string directory, int cameraIndex)
 	if (retVal != XN_STATUS_OK)
     {
 		std::cerr << "ERROR - Kinect::Init:" << std::endl;
-		std::cerr << "\t ... Could not read sample values for invalid disparities";
+		std::cerr << "\t ... Could not read sample values for invalid disparities" << std::endl;
 		return ipa_Utils::RET_FAILED;
     }
 
