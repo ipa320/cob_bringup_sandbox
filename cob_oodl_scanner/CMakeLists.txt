@@ -10,7 +10,6 @@ include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 #set(ROS_BUILD_TYPE RelWithDebInfo)
 
 rosbuild_init()
-rosbuild_genmsg()
 
 #set the default path for built executables to the "bin" directory
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
@@ -27,13 +26,5 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #target_link_libraries(${PROJECT_NAME} another_library)
 #rosbuild_add_boost_directories()
 #rosbuild_link_boost(${PROJECT_NAME} thread)
-#rosbuild_add_executable(example examples/example.cpp)
+rosbuild_add_executable(${PROJECT_NAME} src/${PROJECT_NAME}.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
-
-rosbuild_add_executable(roboskin1 src/roboskin1.cpp)
-rosbuild_add_executable(roboskin2 src/roboskin2.cpp)
-rosbuild_add_executable(roboskin src/roboskin.cpp)
-rosbuild_add_executable(listener src/listener.cpp)
-rosbuild_add_executable(listener1 src/listener1.cpp)
-
-

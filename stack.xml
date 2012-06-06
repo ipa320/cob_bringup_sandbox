@@ -1,16 +1,27 @@
 <stack>
+
   <description brief="cob_driver_sandbox">cob_driver_sandbox</description>
-  <author>Maintained by Georg Arbeiter</author>
-  <license>BSD</license>  
+  <author>Maintained by Florian Weisshardt</author>
+  <license>BSD,LGPL,proprietary</license>  
+
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/cob_driver_sandbox</url>
+
   <depend stack="camera_drivers" /> <!-- prosilica_gige_sdk -->
-  <depend stack="common_msgs" /> <!-- sensor_msgs, diagnostic_msgs -->
+  <depend stack="cob_common" /> <!-- cob_srvs -->
+  <depend stack="cob_extern" /> <!-- libntcan -->
+  <depend stack="common_msgs" /> <!-- sensor_msgs, diagnostic_msgs, visualization_msgs -->
   <depend stack="diagnostics" /> <!-- self_test, diagnostic_updater -->
   <depend stack="driver_common" /> <!-- dynamic_reconfigure, driver_base -->
+  <depend stack="eigen" /> <!-- eigen -->
+  <depend stack="geometry" /> <!-- tf -->
   <depend stack="image_common" /> <!-- polled_camera, image_transport, camera_calibration_parsers -->
   <depend stack="ros" />
+
   <depend stack="ros_comm" /> <!-- std_msgs, roscpp -->
   <depend stack="cob_extern" /> <!--libpcan-->
+
+  <depend stack="ros_comm" /> <!-- rospy, std_msgs, roscpp -->
+
 
 </stack>
