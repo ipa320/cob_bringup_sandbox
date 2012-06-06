@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!--Init roboskin node-->
+	<node pkg="cob_roboskin_test2" type="roboskin1" name="roboskin1"/>
+	<node pkg="cob_roboskin_test2" type="roboskin2" name="roboskin2"/>
+
+	<!-- Start fts node -->
+	<node pkg="fts_Omega160" type="fts_node" name="fts_Omega160" respawn="false" output="screen"/>
+
+	<!--Start arm-->
+	<include file="$(find schunk_bringup)/components/lwa_solo.launch"/>
+
+	<!-- Start teleop node -->
+	<include file="$(find cob_bringup)/tools/teleop.launch"/>
+
+	<!-- Start dashboard -->
+	<include file="$(find schunk_bringup)/tools/dashboard_lwa.launch"/>
+
+	<!-- Sensor listener and cancel the trajectory-->
+	<node pkg="cob_roboskin_test2" type="roboskin_trajectory_cancel" name="roboskin_trajectory_cancel"/>
+
+</launch>
