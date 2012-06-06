@@ -6,7 +6,9 @@
   <url>http://ros.org/wiki/cob_driver_sandbox</url>
   <depend stack="camera_drivers" /> <!-- prosilica_gige_sdk -->
   <depend stack="cob_common" /> <!-- cob_srvs -->
+  <depend stack="cob_driver" /> <!-- cob_camera_sensors -->
   <depend stack="cob_extern" /> <!-- libntcan -->
+  <depend stack="cob_perception_common" /> <!-- cob_vision_utils -->
   <depend stack="common_msgs" /> <!-- sensor_msgs, diagnostic_msgs, visualization_msgs -->
   <depend stack="diagnostics" /> <!-- self_test, diagnostic_updater -->
   <depend stack="driver_common" /> <!-- dynamic_reconfigure, driver_base -->
@@ -15,5 +17,6 @@
   <depend stack="image_common" /> <!-- polled_camera, image_transport, camera_calibration_parsers -->
   <depend stack="ros" />
   <depend stack="ros_comm" /> <!-- rospy, std_msgs, roscpp -->
+  <depend stack="vision_opencv" /> <!-- opencv2 -->
 
 </stack>
