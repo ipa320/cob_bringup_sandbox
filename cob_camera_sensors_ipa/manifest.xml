@@ -4,8 +4,8 @@
      cob_camera_sensors_ipa
 
   </description>
-  <author>fmw</author>
-  <license>BSD</license>
+  <author>Jan Fischer</author>
+  <license>LGPL</license>
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/cob_camera_sensors_ipa</url>
 
