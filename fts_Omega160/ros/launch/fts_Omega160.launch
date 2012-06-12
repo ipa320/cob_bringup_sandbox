@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- start fts_node and locate IniFiles -->
+	<node pkg="fts_Omega160" type="fts_node" name="fts_Omega160" respawn="false" output="screen"/>
+
+</launch>
