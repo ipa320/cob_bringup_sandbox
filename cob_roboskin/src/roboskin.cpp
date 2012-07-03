@@ -16,6 +16,7 @@ int main(int argc, char **argv)
   HANDLE h;
   int baud;
   int setBT;
+
   h = LINUX_CAN_Open("/dev/pcan32",O_RDONLY);
   baud = LINUX_CAN_BTR0BTR1(h, 1000000);
   setBT = CAN_Init(h, CAN_BAUD_1M, CAN_INIT_TYPE_ST);
@@ -59,6 +60,7 @@ int main(int argc, char **argv)
 	  //}	  
       }        
   }
+  
   
   else
   {   

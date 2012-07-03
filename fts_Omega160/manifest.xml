@@ -1,0 +1,20 @@
+<package>
+  <description brief="fts_Omega160">
+
+     fts_Omega160
+
+  </description>
+  <author>Tim Fröhlich</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/fts_Omega160</url>
+  <depend package="std_msgs"/>
+  <depend package="roscpp"/>
+  <depend package="cob_generic_can"/>
+  <depend package="cob_base_drive_chain"/>
+  <depend package="cob_generic_can"/>
+  <depend package="cob_canopen_motor"/>
+  
+</package>
+
+

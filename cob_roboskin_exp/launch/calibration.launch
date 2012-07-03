@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+	<!--Init roboskin node-->
+
+	<rosparam command="load" file="$(find cob_roboskin_test2)/min.yaml"/>
+	<node pkg="cob_roboskin_test2" type="roboskin1" name="roboskin1"/>
+	<node pkg="cob_roboskin_test2" type="roboskin2" name="roboskin2"/>
+	<node pkg="cob_roboskin_test2" type="calibration" name="calibration"/>
+</launch>
