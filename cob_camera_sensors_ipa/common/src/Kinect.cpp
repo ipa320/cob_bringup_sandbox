@@ -87,14 +87,12 @@ unsigned long Kinect::Init(std::string directory, int cameraIndex)
 		return ipa_Utils::RET_FAILED;
 	}
 
-
-
 	// Set video format
 	XnMapOutputMode output_mode;
 	switch (m_ColorCamVideoFormat)
 	{
 	case SXGA:
-		output_mode.nFPS = 15;
+		output_mode.nFPS = 30;
 		output_mode.nXRes = XN_SXGA_X_RES;
 		output_mode.nYRes = XN_SXGA_Y_RES;
 		break;
@@ -108,6 +106,17 @@ unsigned long Kinect::Init(std::string directory, int cameraIndex)
 		output_mode.nXRes = XN_VGA_X_RES;
 		output_mode.nYRes = XN_VGA_Y_RES;
 	}
+
+	retVal = m_image_generator.SetPixelFormat(XN_PIXEL_FORMAT_RGB24);
+	// Kinect
+	//retVal = m_image_generator.SetPixelFormat (XN_PIXEL_FORMAT_GRAYSCALE_8_BIT);
+	if (retVal != XN_STATUS_OK)
+    {
+		std::cerr << "ERROR - Kinect::Init:" << std::endl;
+		std::cerr << "\t ... Could not bypass camera internal debayering" << std::endl;
+		return ipa_Utils::RET_FAILED;
+    }
+
 
 	retVal = m_image_generator.SetMapOutputMode (output_mode);
 	if (retVal !=XN_STATUS_OK)
@@ -147,15 +156,6 @@ unsigned long Kinect::Init(std::string directory, int cameraIndex)
 	// Bypass camera internal debayering give raw bayer pattern
 	// Asus Xtion
 	
-	retVal = m_image_generator.SetPixelFormat(XN_PIXEL_FORMAT_RGB24);
-	// Kinect
-	//retVal = m_image_generator.SetPixelFormat (XN_PIXEL_FORMAT_GRAYSCALE_8_BIT);
-	if (retVal != XN_STATUS_OK)
-    {
-		std::cerr << "ERROR - Kinect::Init:" << std::endl;
-		std::cerr << "\t ... Could not bypass camera internal debayering" << std::endl;
-		return ipa_Utils::RET_FAILED;
-    }
 
 	retVal = m_depth_generator.GetIntProperty( "ShadowValue", m_shadowValue );
 	if (retVal != XN_STATUS_OK)
