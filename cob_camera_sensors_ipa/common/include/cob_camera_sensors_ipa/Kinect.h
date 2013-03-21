@@ -119,10 +119,10 @@ public:
 
 	unsigned long AcquireImages(int widthStepRange, int widthStepColor, int widthStepCartesian, char* RangeImage=NULL, char* IntensityImage=NULL,
 		char* cartesianImage=NULL, bool getLatestFrame=true, bool undistort=true,
-		ipa_CameraSensors::t_ToFGrayImageType grayImageType = ipa_CameraSensors::INTENSITY_32F1);
+		ipa_CameraSensors::t_ToFGrayImageType grayImageType = ipa_CameraSensors::INTENSITY);
 	unsigned long AcquireImages(cv::Mat* rangeImage = 0, cv::Mat* intensityImage = 0,
 		cv::Mat* cartesianImage = 0, bool getLatestFrame = true, bool undistort = true,
-		ipa_CameraSensors::t_ToFGrayImageType grayImageType = ipa_CameraSensors::INTENSITY_32F1);
+		ipa_CameraSensors::t_ToFGrayImageType grayImageType = ipa_CameraSensors::INTENSITY);
 
 	unsigned long SaveParameters(const char* filename);
 
