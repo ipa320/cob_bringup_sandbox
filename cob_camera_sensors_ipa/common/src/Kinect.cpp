@@ -351,6 +351,14 @@ unsigned long Kinect::AcquireImages(int widthStepRange, int widthStepColor, int 
 	//float cx = (color_width >> 1 ) - 0.5f;
 	//float cy = (color_height >> 1) - 0.5f;
 
+	if (m_intrinsicMatrix.empty())
+	{
+		std::cout << "ERROR - Kinect::AcquireImages:" << std::endl;
+		std::cout << "\t ... Intrinsic matrix not initialized\n";
+		std::cout << "\t ... Aborting\n";
+		return ipa_Utils::RET_FAILED;
+	}
+
 	double fx, fy, cx, cy;
 	fx = m_intrinsicMatrix.at<double>(0, 0);
 	fy = m_intrinsicMatrix.at<double>(1, 1);
