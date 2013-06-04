@@ -99,9 +99,6 @@
     <ClInclude Include="..\..\..\..\care-o-bot\cob_perception_common\cob_vision_utils\common\include\cob_vision_utils\CameraSensorTypes.h" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="cob_vision_utils">
-      <UniqueIdentifier>{06b41162-da07-4e28-b1b2-8af955bdb9d6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="windows">
       <UniqueIdentifier>{fdd5f24a-8206-46e5-82a2-4bb9fff3d890}</UniqueIdentifier>
     </Filter>

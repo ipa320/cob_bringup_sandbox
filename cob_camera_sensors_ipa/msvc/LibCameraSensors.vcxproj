@@ -219,6 +219,8 @@ copy "$(OutDir)$(ProjectName)D.lib" "$(COB3_DIR)\cob_object_perception_intern\wi
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <PrecompiledHeaderOutputFile>$(COB3_DIR)\cob_object_perception_intern\windows\pch\PreCompiledHeadersD.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>$(IntDir)\vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <AdditionalOptions>/NODEFAULTLIB:libc.lib /NODEFAULTLIB:libcmt.lib /NODEFAULTLIB:msvcrt.lib /NODEFAULTLIB:libcd.lib /NODEFAULTLIB:libcmtd.lib %(AdditionalOptions)</AdditionalOptions>
