@@ -92,7 +92,7 @@ unsigned long Kinect::Init(std::string directory, int cameraIndex)
 	switch (m_ColorCamVideoFormat)
 	{
 	case SXGA:
-		output_mode.nFPS = 15;
+		output_mode.nFPS = 30;
 		output_mode.nXRes = XN_SXGA_X_RES;
 		output_mode.nYRes = XN_SXGA_Y_RES;
 		break;
@@ -106,6 +106,17 @@ unsigned long Kinect::Init(std::string directory, int cameraIndex)
 		output_mode.nXRes = XN_VGA_X_RES;
 		output_mode.nYRes = XN_VGA_Y_RES;
 	}
+
+	retVal = m_image_generator.SetPixelFormat(XN_PIXEL_FORMAT_RGB24);
+	// Kinect
+	//retVal = m_image_generator.SetPixelFormat (XN_PIXEL_FORMAT_GRAYSCALE_8_BIT);
+	if (retVal != XN_STATUS_OK)
+    {
+		std::cerr << "ERROR - Kinect::Init:" << std::endl;
+		std::cerr << "\t ... Could not bypass camera internal debayering" << std::endl;
+		return ipa_Utils::RET_FAILED;
+    }
+
 
 	retVal = m_image_generator.SetMapOutputMode (output_mode);
 	if (retVal !=XN_STATUS_OK)
@@ -145,15 +156,6 @@ unsigned long Kinect::Init(std::string directory, int cameraIndex)
 	// Bypass camera internal debayering give raw bayer pattern
 	// Asus Xtion
 	
-	retVal = m_image_generator.SetPixelFormat(XN_PIXEL_FORMAT_RGB24);
-	// Kinect
-	//retVal = m_image_generator.SetPixelFormat (XN_PIXEL_FORMAT_GRAYSCALE_8_BIT);
-	if (retVal != XN_STATUS_OK)
-    {
-		std::cerr << "ERROR - Kinect::Init:" << std::endl;
-		std::cerr << "\t ... Could not bypass camera internal debayering" << std::endl;
-		return ipa_Utils::RET_FAILED;
-    }
 
 	retVal = m_depth_generator.GetIntProperty( "ShadowValue", m_shadowValue );
 	if (retVal != XN_STATUS_OK)
@@ -212,6 +214,10 @@ unsigned long Kinect::Open()
 	int width = m_depth_md.XRes();
 	int height = m_depth_md.YRes();
 	m_range_mat.create(height, width, CV_16UC1);
+
+	// Mirror image data
+	xnSetMirror(m_depth_generator, false);
+	xnSetMirror(m_image_generator, false);
 
 	std::cout << "*************************************************" << std::endl;
 	std::cout << "Kinect::Open: Kinect camera device OPEN" << std::endl;
@@ -345,13 +351,21 @@ unsigned long Kinect::AcquireImages(int widthStepRange, int widthStepColor, int 
 	//float cx = (color_width >> 1 ) - 0.5f;
 	//float cy = (color_height >> 1) - 0.5f;
 
+	if (m_intrinsicMatrix.empty())
+	{
+		std::cout << "ERROR - Kinect::AcquireImages:" << std::endl;
+		std::cout << "\t ... Intrinsic matrix not initialized\n";
+		std::cout << "\t ... Aborting\n";
+		return ipa_Utils::RET_FAILED;
+	}
+
 	double fx, fy, cx, cy;
-	float constant;
 	fx = m_intrinsicMatrix.at<double>(0, 0);
 	fy = m_intrinsicMatrix.at<double>(1, 1);
 	cx = m_intrinsicMatrix.at<double>(0, 2);
 	cy = m_intrinsicMatrix.at<double>(1, 2);
-	constant = 0.001 / fx;
+	float constant_x = 0.001 / fx;
+	float constant_y = 0.001 / fy;
 
 	if(rangeImageData || cartesianImageData)
 	{
@@ -402,14 +416,14 @@ unsigned long Kinect::AcquireImages(int widthStepRange, int widthStepColor, int 
 					}
 					else
 					{
-						p_xyz[colTimes3] = (col - cx) * p_us_dist[col] * constant;
-						p_xyz[colTimes3 + 1] = (row - cy) * p_us_dist[col] * constant;
+						p_xyz[colTimes3] = (col - cx) * p_us_dist[col] * constant_x;
+						p_xyz[colTimes3 + 1] = (row - cy) * p_us_dist[col] * constant_y;
 						p_xyz[colTimes3 + 2] = p_us_dist[col] * 0.001;
 
-						if (p_xyz[colTimes3 + 2] < 0)
-						{
-							std::cout << "<0: " << row << " " << col << "\n";
-						}
+						//if (p_xyz[colTimes3 + 2] < 0)
+						//{
+						//	std::cout << "<0: " << row << " " << col << "\n";
+						//}
 
 						//XnPoint3D proj, real;
 						//proj.X = col;
@@ -471,12 +485,15 @@ unsigned long Kinect::AcquireImages(int widthStepRange, int widthStepColor, int 
 		unsigned char temp_val = 0;
 		unsigned char* p_dest = 0;
 		unsigned int colTimes3 = 0;
+		int colInverse = 0;
 		for(unsigned int row=0; row<(unsigned int)color_height; row++)
 		{
 			p_dest = ((unsigned char*)colorImageData) + row * color_width * 3;
 			for (unsigned int col=0; col<(unsigned int)color_width; col++)
 			{
 				colTimes3 = col*3;
+
+				// Switch red and blue image channels
 				temp_val = p_dest[colTimes3];
 				p_dest[colTimes3] = p_dest[colTimes3 + 2];
 				p_dest[colTimes3 + 2] = temp_val;
