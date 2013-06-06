@@ -5,7 +5,7 @@
 	#include "cob_vision_utils/VisionUtils.h"
 	#include "tinyxml.h"
 #else
-	#include "cob_driver_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/PMDCamCube.h"
+	#include "cob_bringup_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/PMDCamCube.h"
 
 	#include "cob_perception_common/cob_vision_utils/common/include/cob_vision_utils/VisionUtils.h"
 	#include "cob_object_perception_intern/windows/src/extern/TinyXml/tinyxml.h"

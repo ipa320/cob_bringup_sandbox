@@ -2,7 +2,7 @@
 #ifdef __LINUX__
 	#include "cob_camera_sensors_ipa/ICCam.h"
 #else
-	#include "cob_driver_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/ICCam.h"
+	#include "cob_bringup_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/ICCam.h"
 #endif
 
 using namespace ipa_CameraSensors;
