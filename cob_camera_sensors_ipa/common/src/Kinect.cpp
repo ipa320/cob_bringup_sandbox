@@ -387,7 +387,9 @@ unsigned long Kinect::AcquireImages(int widthStepRange, int widthStepColor, int 
 		{
 			resized_range_mat.create(XN_SXGA_Y_RES, XN_SXGA_X_RES, m_range_mat.type());
 			resized_range_mat.setTo(cv::Scalar(m_badDepth));
-			cv::Mat sub_mat = resized_range_mat.rowRange(0, 2*XN_VGA_Y_RES);
+			int y_idx = 0.5*(XN_SXGA_Y_RES-(2*XN_VGA_Y_RES)-1);
+			int x_idx = 0.5*(XN_SXGA_X_RES-2*XN_VGA_X_RES-1);
+			cv::Mat sub_mat = resized_range_mat.rowRange(y_idx, y_idx + 2*XN_VGA_Y_RES);
 			cv::resize(m_range_mat, sub_mat, cv::Size(), 2, 2, CV_INTER_NN);
 		}
 		else
@@ -456,7 +458,7 @@ unsigned long Kinect::AcquireImages(int widthStepRange, int widthStepColor, int 
 					if (us_val != m_noSampleValue && 
 						us_val != m_shadowValue &&
 						us_val != 0)
-						p_f_dist[col] = (float)us_val;
+						p_f_dist[col] = 0.001 * (float)us_val;
 					else
 						p_f_dist[col] = (float)m_badDepth;
 				}	
