@@ -84,8 +84,11 @@
 //#include <assert.h>
 //#include <sstream>
 //
-#include <XnOS.h>
-#include <XnCppWrapper.h>
+//#include <XnOS.h>
+//#include <XnCppWrapper.h>
+
+#include <OpenNI.h>
+#include <PrimeSense.h>
 
 namespace ipa_CameraSensors {
 
@@ -136,19 +139,32 @@ private:
 
 	cv::Mat m_range_mat; ///< Temporary storage
 
+	/* // For OpenNI 1.5
 	xn::Context m_context;					// OpenNI main object
 	xn::DepthGenerator m_depth_generator;	// OpenNI depthmap generator
 	xn::ImageGenerator m_image_generator;	// OpenNI image generator
-
+	
 	xn::DepthMetaData m_depth_md; ///< OpenNI metadat for depth generator
 	xn::ImageMetaData m_image_md; ///< OpenNI metadat for image generator
 	
-    XnDouble m_baseline; ///< The distance between the IR projector and the IR camera
+	XnDouble m_baseline; ///< The distance between the IR projector and the IR camera
 	XnUInt64 m_depthFocalLength_VGA; ///< Focal length in pixels for the IR camera in VGA resolution
-    XnUInt64 m_shadowValue; ///< The value for shadow (occluded pixels)
+	XnUInt64 m_shadowValue; ///< The value for shadow (occluded pixels)
 
-    XnUInt64 m_noSampleValue; ///< The value for pixels without a valid disparity measurement
+	XnUInt64 m_noSampleValue; ///< The value for pixels without a valid disparity measurement
 
+	*/
+
+	// For OpenNI 2
+	//openni::OpenNI m_openni;							// OpenNI main object
+	openni::Device m_device;							// OpenNI device object
+	openni::VideoStream m_vs_rgb,m_vs_d,m_vs_ir;		// OpenNI VideoStream
+	openni::VideoFrameRef m_vfr_rgb,m_vfr_d,m_vfr_ir;	// OpenNI VideoFrameRef
+	openni::VideoMode m_output_mode;					// Output VideoMode
+
+	cv::Mat m_XYZ;
+	double m_dZ;
+	
 	static const unsigned short m_badDepth = 0; ///< Value to indicate bad depth
 
 	t_KinectColorCamVideoFormat m_ColorCamVideoFormat; ///< Video format of color camera
@@ -156,27 +172,8 @@ private:
 	//*******************************************************************************
 	// Camera specific members
 	//*******************************************************************************
-
-	/// Load general SR31 parameters and previously determined calibration parameters.
-	/// @param filename Swissranger parameter path and file name.
-	/// @param cameraIndex The index of the camera within the configuration file
-	///		   i.e. SR_CAM_0 or SR_CAM_1
-	/// @return Return value 
+	
 	unsigned long LoadParameters(const char* filename, int cameraIndex);
-
-	bool m_CoeffsInitialized;	///< True, when m_CoeffsAx have been initialized
-
-	/// Given a 32 bit swissranger depth value, the real depth value in meteres is given by:
-	/// z(u,v)=a0(u,v)+a1(u,v)*d(u,v)+a2(u,v)*d(u,v)^2
-	///       +a3(u,v)*d(u,v)^3+a4(u,v)*d(u,v)^4+a5(u,v)*d(u,v)^5
-	///       +a6(u,v)*d(u,v)^6;
-	cv::Mat m_CoeffsA0; ///< a0 z-calibration parameters. One matrix entry corresponds to one pixel
-	cv::Mat m_CoeffsA1; ///< a1 z-calibration parameters. One matrix entry corresponds to one pixel
-	cv::Mat m_CoeffsA2; ///< a2 z-calibration parameters. One matrix entry corresponds to one pixel
-	cv::Mat m_CoeffsA3; ///< a3 z-calibration parameters. One matrix entry corresponds to one pixel
-	cv::Mat m_CoeffsA4; ///< a4 z-calibration parameters. One matrix entry corresponds to one pixel
-	cv::Mat m_CoeffsA5; ///< a5 z-calibration parameters. One matrix entry corresponds to one pixel
-	cv::Mat m_CoeffsA6; ///< a6 z-calibration parameters. One matrix entry corresponds to one pixel
 };
 
 /// Creates, intializes and returns a smart pointer object for the camera.
