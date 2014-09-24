@@ -6,7 +6,6 @@
 #ifndef __IPA_IPCAMERA_H__
 #define __IPA_IPCAMERA_H__
 
-#include "../../../../../cob_object_perception_intern/windows/src/PreCompiledHeaders/StdAfx.h"
 #ifdef __LINUX__
 	#include "cob_vision_utils/CameraSensorDefines.h"
 	#include "cob_vision_utils/CameraSensorTypes.h"
@@ -17,7 +16,7 @@
 	#include "cob_perception_common/cob_vision_utils/common/include/cob_vision_utils/GlobalDefines.h"
 #endif
 
-#include <opencv/cv.h>
+#include <opencv2/core/core.hpp>
 
 #include <boost/thread/mutex.hpp>
 #include <boost/thread/condition_variable.hpp>

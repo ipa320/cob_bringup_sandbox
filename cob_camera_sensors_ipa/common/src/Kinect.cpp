@@ -1,16 +1,17 @@
 #include "../../../../cob_object_perception_intern/windows/src/PreCompiledHeaders/StdAfx.h"
 #ifdef __LINUX__
-	#include "cob_camera_sensors_ipa/Kinect.h"
-	#include "tinyxml.h"
+	#include "cob_camera_sensors_ipa/Kinect.h"	
 	#include "cob_vision_utils/GlobalDefines.h"
+
+	#include "tinyxml.h"
+	#include <fstream>
+	#include <iostream>
 #else
 	#include "cob_bringup_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/Kinect.h"
-	#include "cob_object_perception_intern/windows/src/extern/TinyXml/tinyxml.h"
 	#include "cob_perception_common/cob_vision_utils/common/include/cob_vision_utils/GlobalDefines.h"
 #endif
 
-#include <fstream>
-#include <iostream>
+
 
 using namespace ipa_CameraSensors;
 #define AVG(a,b) (((int)(a) + (int)(b)) >> 1)
@@ -2282,7 +2283,7 @@ unsigned long Kinect::LoadParameters(const char* filename, int cameraIndex)
 				else
 				{
 					std::cerr << "ERROR - Kinect::LoadParameters:" << std::endl;
-					std::cerr << "\t ... Can't find tag 'CalibrationMethod'." << std::endl;
+					std::cerr << "\t ... Can't find tag 'OffsetZ'." << std::endl;
 					return (RET_FAILED | RET_XML_TAG_NOT_FOUND);
 				}
 			}

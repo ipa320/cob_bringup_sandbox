@@ -72,7 +72,6 @@
 #ifndef __IPA_KINECT_H__
 #define __IPA_KINECT_H__
 
-#include "../../../../../cob_object_perception_intern/windows/src/PreCompiledHeaders/StdAfx.h"
 #ifdef __LINUX__
 	#include <cob_camera_sensors/AbstractRangeImagingSensor.h>
 #else

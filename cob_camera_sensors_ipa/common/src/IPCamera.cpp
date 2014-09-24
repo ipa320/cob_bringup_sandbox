@@ -1,11 +1,13 @@
 #include "../../../../cob_object_perception_intern/windows/src/PreCompiledHeaders/StdAfx.h"
 #ifdef __LINUX__
 	#include "cob_camera_sensors_ipa/IPCamera.h"
+
+	#include <stdio.h>
 #else
 	#include "cob_bringup_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/IPCamera.h"
 #endif
 
-#include <stdio.h>
+
 using namespace ipa_CameraSensors;
 
 CameraAxisJPEGStreamQueue::CameraAxisJPEGStreamQueue()

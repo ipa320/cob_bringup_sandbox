@@ -55,13 +55,12 @@
 #include "cob_camera_sensors_ipa/OpenCVCamera.h"
 
 #include "tinyxml/tinyxml.h"
+#include <iostream>
 #else
 #include "cob_bringup_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/OpenCVCamera.h"
 
-#include "cob_object_perception_intern/windows/src/extern/TinyXml/tinyxml.h"
 #endif
 
-#include <iostream>
 
 using namespace ipa_CameraSensors;
 
