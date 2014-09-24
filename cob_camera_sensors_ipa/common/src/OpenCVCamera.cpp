@@ -255,7 +255,7 @@ unsigned long OpenCVCamera::GetColorImage(cv::Mat* colorImage, bool getLatestFra
 
 		if (read_frame(*colorImage))
 			break;
-        
+		
 		/* EAGAIN - continue select loop. */
 	}
 #else
@@ -467,12 +467,12 @@ void OpenCVCamera::errno_exit(const char* s)
 
 int OpenCVCamera::xioctl (int m_fd, int request, void* arg)
 {
-        int r;
+		int r;
 
-        do r = ioctl (m_fd, request, arg);
-        while (-1 == r && EINTR == errno);
+		do r = ioctl (m_fd, request, arg);
+		while (-1 == r && EINTR == errno);
 
-        return r;
+		return r;
 }
 
 // copies the frame from the capture buffer to a cv::Mat and converts YUYV to BGR
@@ -593,7 +593,7 @@ void OpenCVCamera::start_capturing(void)
 		if (-1 == xioctl (m_fd, VIDIOC_QBUF, &buf))
 			errno_exit ("VIDIOC_QBUF");
 	}
-                
+				
 	type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
 
 	if (-1 == xioctl (m_fd, VIDIOC_STREAMON, &type))
