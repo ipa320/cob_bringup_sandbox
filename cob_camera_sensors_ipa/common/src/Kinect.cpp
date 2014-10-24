@@ -564,7 +564,8 @@ unsigned long Kinect::AcquireImages(int widthStepRange, int widthStepColor, int 
 	retVal = openni::OpenNI::waitForAnyStream(&tempStream_d, 1, &changedIndex, 2000); //2000ms
 	if (retVal != openni::STATUS_OK)
 	{
-		printf("Wait depth stream failed\n");
+		std::cerr << "ERROR - Kinect::AcquireImages" << std::endl;
+		std::cerr << "\t ... Wait limit for depth stream exceeded" << std::endl;
 		return ipa_Utils::RET_FAILED;;
 	}
 	m_vs_d.readFrame(&m_vfr_d); 
@@ -581,7 +582,8 @@ unsigned long Kinect::AcquireImages(int widthStepRange, int widthStepColor, int 
 	retVal = openni::OpenNI::waitForAnyStream(&tempStream_rgb, 1, &changedIndex, 2000); //2000ms
 	if (retVal != openni::STATUS_OK)
 	{
-		printf("Wait color stream failed\n");
+		std::cerr << "ERROR - Kinect::AcquireImages" << std::endl;
+		std::cerr << "\t ... Wait limit for color stream exceeded" << std::endl;
 		return ipa_Utils::RET_FAILED;;
 	}
 	m_vs_rgb.readFrame(&m_vfr_rgb); 
@@ -595,7 +597,8 @@ unsigned long Kinect::AcquireImages(int widthStepRange, int widthStepColor, int 
 		retVal = m_vs_ir.start();
 		if (retVal != openni::STATUS_OK)
 		{
-			printf("Cannot start ir stream\n");
+			std::cerr << "ERROR - Kinect::AcquireImages" << std::endl;
+			std::cerr << "\t [FAILED] Starting IR stream" << std::endl;
 			return ipa_Utils::RET_FAILED;;
 		}
 
@@ -603,7 +606,8 @@ unsigned long Kinect::AcquireImages(int widthStepRange, int widthStepColor, int 
 		retVal = openni::OpenNI::waitForAnyStream(&tempStream_ir, 1, &changedIndex, 2000); //2000ms
 		if (retVal != openni::STATUS_OK)
 		{
-			printf("Wait ir stream failed\n");
+			std::cerr << "ERROR - Kinect::AcquireImages" << std::endl;
+			std::cerr << "\t ... Wait limit for IR stream exceeded" << std::endl;
 			return ipa_Utils::RET_FAILED;;
 		}
 		
