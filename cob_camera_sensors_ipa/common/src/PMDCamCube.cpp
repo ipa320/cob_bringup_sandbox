@@ -1,4 +1,4 @@
-#include "../../../../cob_object_perception_intern/windows/src/PreCompiledHeaders/StdAfx.h"
+#include <cob_vision_utils/StdAfx.h>
 #ifdef __LINUX__
 	#include "cob_camera_sensors_ipa/PMDCamCube.h"
 
@@ -213,14 +213,14 @@ unsigned long PMDCamCube::Open()
 		ret = pmdOpen (&m_PMDCam, SOURCE_PLUGIN, m_Serial.c_str(), PROC_PLUGIN, "");
 	}
 	if (ret != PMD_OK)
-    {
+	{
 		pmdGetLastError (0, err, 128);
 		std::cerr << "ERROR - PMDCamCube::Open():" << std::endl;
 		std::cerr << "\t ... Could not connect to PMD CamCube camera" << std::endl;
 		std::cerr << "\t ... Check connection and specified serial number" << std::endl;
 		std::cerr << "\t ... '" << err << "'" << std::endl;
 		return RET_FAILED;
-    }
+	}
 
 	if (SetParameters() & ipa_CameraSensors::RET_FAILED)
 	{
@@ -280,13 +280,13 @@ unsigned long PMDCamCube::Close()
 	}
 
 	if (pmdClose(m_PMDCam) != PMD_OK)
-    {
+	{
 		pmdGetLastError (0, err, 128);
 		std::cerr << "ERROR - PMDCamCube::Close():" << std::endl;
 		std::cerr << "\t ... Could not close PMD CamCube camera" << std::endl;
 		std::cerr << "\t ... '" << err << "'" << std::endl;
 		return RET_FAILED;
-    }
+	}
 	m_PMDCam = 0;
 
 	m_open = false;
@@ -399,15 +399,15 @@ unsigned long PMDCamCube::SetProperty(t_cameraProperty* cameraProperty)
 			else if (cameraProperty->propertyType & (ipa_CameraSensors::TYPE_LONG | ipa_CameraSensors::TYPE_UNSIGNED))
 			{
 				// MF_40MHz, SR3k: maximal range 3.75m
-                // MF_30MHz, SR3k, SR4k: maximal range 5m
-                // MF_21MHz, SR3k: maximal range 7.14m
-                // MF_20MHz, SR3k: maximal range 7.5m
-                // MF_19MHz, SR3k: maximal range 7.89m
-                // MF_60MHz, SR4k: maximal range 2.5m 
-                // MF_15MHz, SR4k: maximal range 10m
-                // MF_10MHz, SR4k: maximal range 15m
-                // MF_29MHz, SR4k: maximal range 5.17m
-                // MF_31MHz
+				// MF_30MHz, SR3k, SR4k: maximal range 5m
+				// MF_21MHz, SR3k: maximal range 7.14m
+				// MF_20MHz, SR3k: maximal range 7.5m
+				// MF_19MHz, SR3k: maximal range 7.89m
+				// MF_60MHz, SR4k: maximal range 2.5m 
+				// MF_15MHz, SR4k: maximal range 10m
+				// MF_10MHz, SR4k: maximal range 15m
+				// MF_29MHz, SR4k: maximal range 5.17m
+				// MF_31MHz
 				if (cameraProperty->stringData == "MF_40MHz")
 				{
 					err = SR_SetModulationFrequency(m_PMDCam, MF_40MHz);
@@ -864,13 +864,13 @@ unsigned long PMDCamCube::AcquireImages(int widthStepRange, int widthStepGray, i
 	// Acquire new image data
 	ret = pmdUpdate (m_PMDCam);
 	if (ret != PMD_OK)
-    {
+	{
 		pmdGetLastError (m_PMDCam, err, 128);
 		std::cerr << "ERROR - PMDCamCube::AcquireImages:" << std::endl;
 		std::cerr << "\t ... Could not get image data from camera" << std::endl;
 		std::cerr << "\t ... '" << err << "'" << std::endl;
 		return RET_FAILED;
-    }
+	}
 	
 ///***********************************************************************
 // Range image (distorted or undistorted)
@@ -1017,7 +1017,7 @@ unsigned long PMDCamCube::AcquireImages(int widthStepRange, int widthStepGray, i
 
 				// Undistort
 				CvMat* undistortedData = cvCloneMat(distortedData);
-	 			RemoveDistortion(distortedData, undistortedData);
+				RemoveDistortion(distortedData, undistortedData);
 				cvReleaseMat(&distortedData);
 
 				// Calculate X and Y based on instrinsic rotation and translation
