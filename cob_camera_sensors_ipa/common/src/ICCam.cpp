@@ -1,8 +1,8 @@
-#include "../../../../cob_object_perception_intern/windows/src/PreCompiledHeaders/StdAfx.h"
+#include <cob_vision_utils/StdAfx.h>
 #ifdef __LINUX__
 	#include "cob_camera_sensors_ipa/ICCam.h"
 #else
-	#include "cob_driver_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/ICCam.h"
+	#include "cob_bringup_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/ICCam.h"
 #endif
 
 using namespace ipa_CameraSensors;
@@ -686,7 +686,7 @@ unsigned long ICCam::Open()
 	}
 
 	m_grabber = new DShowLib::Grabber();
-    //m_grabber->showDevicePage();
+	//m_grabber->showDevicePage();
 	m_grabber->openDev(m_cameraType); //"DBx 31AF03" or "DFx 41F02";
 
 	if( m_grabber->isDevValid() )  // Check if there is a valid device.

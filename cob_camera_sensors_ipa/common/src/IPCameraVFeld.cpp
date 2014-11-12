@@ -1,15 +1,16 @@
-#include "../../../../cob_object_perception_intern/windows/src/PreCompiledHeaders/StdAfx.h"
+#include <cob_vision_utils/StdAfx.h>
 #ifdef __LINUX__
 	#include "cob_camera_sensors_ipa/IPCameraVFeld.h"
 
 	#include "cob_vision_utils/memJpegDecoder.h"
+	#include <iostream>
 #else
-	#include "cob_driver_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/IPCameraVFeld.h"
+	#include "cob_bringup_sandbox/cob_camera_sensors_ipa/common/include/cob_camera_sensors_ipa/IPCameraVFeld.h"
 
 	#include "cob_object_perception_intern/windows/src/extern/MemJpegDecoder/memJpegDecoder.h"
 #endif
 
-#include <iostream>
+
 
 using namespace ipa_CameraSensors;
 
